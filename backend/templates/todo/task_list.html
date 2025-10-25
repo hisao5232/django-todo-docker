@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>ToDoリスト</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">追加</button>
+  </form>
+
+  <ul>
+    {% for task in tasks %}
+      <li>
+        <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+        {% if task.completed %}✅{% else %}⬜{% endif %}
+        <a href="{% url 'task_toggle' task.pk %}">[完了切替]</a>
+        <a href="{% url 'task_edit' task.pk %}">[編集]</a>
+        <a href="{% url 'task_delete' task.pk %}">[削除]</a>
+      </li>
+    {% empty %}
+      <li>タスクはありません。</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

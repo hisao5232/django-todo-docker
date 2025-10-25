@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.env
+*.db
+
+# Django
+*.migrations/
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# Docker
+*.pid
+*.tar
+*.gz
+*.lock
+
+# VSCode
+.vscode/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ task.title }}</h2>
+  <p>{{ task.description }}</p>
+  <p>作成日: {{ task.created_at }}</p>
+  <p>状態: {% if task.completed %}完了{% else %}未完了{% endif %}</p>
+  <a href="{% url 'task_edit' task.pk %}">編集</a> |
+  <a href="{% url 'task_delete' task.pk %}">削除</a> |
+  <a href="{% url 'task_list' %}">戻る</a>
+{% endblock %}

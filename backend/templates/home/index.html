@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>ようこそ！</h1>
+
+  {% if user.is_authenticated %}
+    <p>{{ user.username }} さん、ログイン中です。</p>
+
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">ログアウト</button>
+    </form>
+
+    <p>
+      <a href="{% url 'task_list' %}">
+        <button>ToDoリストへ</button>
+      </a>
+    </p>
+
+  {% else %}
+    <p><a href="{% url 'login' %}">ログイン</a></p>
+  {% endif %}
+{% endblock %}
